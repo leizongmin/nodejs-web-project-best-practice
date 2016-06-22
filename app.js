@@ -73,3 +73,11 @@ if (!module.parent) {
 
 // 输出app
 module.exports = app;
+
+//------------------------------------------------------------------------------
+
+// 模拟需要查询数据库得到的配置信息
+config.set('lazyConfig.data', null);
+setTimeout(() => {
+  config.set('lazyConfig.data', new Date());
+}, 2000);
