@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * 连接到数据库
+ */
+
 const mongoose = require('mongoose');
 const config = require('../config');
 
@@ -13,6 +17,3 @@ mongoose.connect(config.db, err => {
 // models
 require('./user');
 require('./topic');
-
-exports.User = mongoose.model('User');
-exports.Topic = mongoose.model('Topic');

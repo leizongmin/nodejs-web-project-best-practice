@@ -2,11 +2,11 @@
 
 const express = require('express');
 const router = express.Router();
-const Topic = require('../models').Topic;
+const Topic = require('../proxy/topic');
 
 /* 显示文章列表 */
 router.get('/', function (req, res, next) {
-  Topic.find({}, {content: 0}, (err, ret) => {
+  Topic.getList({}, (err, ret) => {
     if (err) return next(err);
 
     res.render('index', {
@@ -18,7 +18,7 @@ router.get('/', function (req, res, next) {
 
 /* 获取文章详情 */
 router.get('/topic/:id', function (req, res, next) {
-  Topic.findOne({_id: req.params.id}, (err, ret) => {
+  Topic.get(req.params.id, (err, ret) => {
     if (err) return next(err);
     if (!ret) return next(new Error('文章不存在'));
 

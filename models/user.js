@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * User model
+ */
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -14,3 +18,4 @@ const UserSchema = new Schema({
 });
 
 mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', UserSchema);

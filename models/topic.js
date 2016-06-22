@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * Topic model
+ */
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
@@ -28,3 +32,4 @@ TopicSchema.index({ top: -1, last_reply_at: -1 });
 TopicSchema.index({ author_id: 1, create_at: -1 });
 
 mongoose.model('Topic', TopicSchema);
+module.exports = mongoose.model('Topic');
