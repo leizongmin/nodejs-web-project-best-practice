@@ -8,9 +8,15 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
 
+// 载入配置
+const config = require('./config');
+
+// 载入models
+require('./models');
+
 // 载入路由处理程序
 const routes = require('./routes/index');
-const users = require('./routes/users');
+const apis = require('./routes/apis');
 
 // 创建express实例
 const app = express();
@@ -29,17 +35,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // 注册路由
 app.use('/', routes);
-app.use('/users', users);
+app.use('/api', apis);
 
 // 404页面
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
+// API出错
+app.use('/api', function (err, req, res, next) {
+  res.status(err.status || 500);
+  res.json({error: err.message});
+});
+
 // 出错页面
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
@@ -48,8 +60,7 @@ app.use(function(err, req, res, next) {
 });
 
 // 监听端口
-const port = process.env.PORT || 3000;
-app.listen(port, err => {
+app.listen(config.port, err => {
   if (err) throw err;
-  console.log('服务器已启动。  http://127.0.0.1:%d', port);
+  console.log('服务器已启动。  http://127.0.0.1:%d', config.port);
 });

@@ -1,8 +1,10 @@
-var express = require('express');
-var router = express.Router();
+'use strict';
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
+const express = require('express');
+const router = express.Router();
+
+/* 首页 */
+router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
