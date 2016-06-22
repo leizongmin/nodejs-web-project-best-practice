@@ -5,15 +5,21 @@
  */
 
 const mongoose = require('mongoose');
-const config = require('../config');
 
-mongoose.connect(config.get('db'), err => {
-  if (err) {
-    console.error('connect to %s error: ', config.get('db'), err.message);
-    process.exit(1);
-  }
-});
+module.exports = function (project) {
 
-// models
-require('./user');
-require('./topic');
+  // 创建 MongoDB 连接
+  project.mongoose = mongoose.createConnection(project.config.get('db'), err => {
+    if (err) {
+      console.error('connect to %s error: ', project.config.get('db'), err.message);
+      process.exit(1);
+    }
+  });
+
+  // models
+  project.model = {};
+  require('./user')(project);
+  require('./topic')(project);
+
+};
+

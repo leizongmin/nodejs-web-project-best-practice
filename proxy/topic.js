@@ -4,12 +4,18 @@
  * Topic model 代理
  */
 
-const Topic = require('../models/topic');
+module.exports = function (project) {
 
-exports.getList = function (query, callback) {
-  Topic.find(query, {content: 0}, callback);
-};
+  const exports = {};
 
-exports.get = function (id, callback) {
-  Topic.findOne({_id: id}, callback);
+  exports.getList = function (query, callback) {
+    project.model.Topic.find(query, {content: 0}, callback);
+  };
+
+  exports.get = function (id, callback) {
+    project.model.Topic.findOne({_id: id}, callback);
+  };
+
+  return exports;
+
 };

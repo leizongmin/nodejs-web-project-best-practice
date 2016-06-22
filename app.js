@@ -39,7 +39,27 @@ project.initFunctions.push(next => {
 
 // 载入models
 project.initFunctions.push(next => {
-  require('./models');
+  require('./models')(project);
+  next();
+});
+
+// 载入model代理
+project.initFunctions.push(next => {
+  require('./proxy')(project);
+  next();
+});
+
+// 载入公共函数
+project.initFunctions.push(next => {
+  require('./common')(project);
+  next();
+});
+
+// 载入路由处理程序
+project.initFunctions.push(next => {
+  project.routes = {};
+  project.routes.index = require('./routes/index')(project);
+  project.routes.apis = require('./routes/apis')(project);
   next();
 });
 
@@ -48,29 +68,25 @@ project.initFunctions.push(next => {
 
   const app = project.app = express();
 
-  // 载入路由处理程序
-  const routes = require('./routes/index');
-  const apis = require('./routes/apis');
-
   // 设置模板引擎
   app.set('views', path.join(__dirname, 'views'));
   app.engine('html', ejs.renderFile);
   app.set('view engine', 'html');
 
   // 模板全局变量
-  app.locals.config = require('./config');
-  app.locals.utils = require('./common/utils');
+  app.locals.config = project.config;
+  app.locals.utils = project.common.utils;
 
   // 载入和初始化中间件
-  app.use(log4js.connectLogger(require('./common/logger'), { level: log4js.levels.INFO, format: ':method :url' }));
+  app.use(log4js.connectLogger(project.common.logger, { level: log4js.levels.INFO, format: ':method :url' }));
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(cookieParser());
   app.use(express.static(path.join(__dirname, 'public')));
 
   // 注册路由
-  app.use('/', routes);
-  app.use('/api', apis);
+  app.use('/', project.routes.index);
+  app.use('/api', project.routes.apis);
 
   // 404页面
   app.use(function (req, res, next) {

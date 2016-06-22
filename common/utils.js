@@ -5,9 +5,17 @@
  */
 
 const MarkdownIt = require('markdown-it');
-const md = new MarkdownIt();
 
-/* 渲染Markdown */
-exports.renderMarkdown = function (data) {
-  return md.render(data);
+module.exports = function (project) {
+
+  const exports = {};
+  const md = new MarkdownIt();
+
+  /* 渲染Markdown */
+  exports.renderMarkdown = function (data) {
+    return md.render(data);
+  };
+
+  return exports;
+
 };

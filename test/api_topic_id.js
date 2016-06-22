@@ -7,7 +7,6 @@
 const should = require('should');
 const request = require('supertest');
 const project = require('../app');
-const Topic = require('../proxy/topic');
 
 describe('/api/topic/:id', function () {
 
@@ -29,7 +28,7 @@ describe('/api/topic/:id', function () {
   });
 
   it('should response topic', function (done) {
-    Topic.getList({}, (err, list) => {
+    project.proxy.Topic.getList({}, (err, list) => {
       if (err) throw err;
 
       list.should.be.an.Array();

@@ -5,11 +5,14 @@
  */
 
 const log4js = require('log4js');
-const config = require('../config');
 
-log4js.configure({appenders: config.get('log.appenders')});
+module.exports = function (project) {
 
-const logger = log4js.getLogger('cheese');
-logger.setLevel(config.get('log.level'));
+  log4js.configure({appenders: project.config.get('log.appenders')});
 
-module.exports = logger;
+  const logger = log4js.getLogger('cheese');
+  logger.setLevel(project.config.get('log.level'));
+
+  return logger;
+
+};
