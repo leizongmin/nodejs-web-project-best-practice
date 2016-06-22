@@ -17,4 +17,14 @@ envs.forEach(env => {
   config.merge(c);
 });
 
+// 重载get()
+config._get = config.get;
+config.get = (n) => {
+  const v = config._get(n);
+  if (typeof v === 'undefined') {
+    throw new Error('配置项' + n + '不存在！');
+  }
+  return v;
+};
+
 module.exports = config;
