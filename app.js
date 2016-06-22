@@ -26,6 +26,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('html', ejs.renderFile);
 app.set('view engine', 'html');
 
+// 模板全局变量
+app.locals.config = require('./config');
+app.locals.utils = require('./common/utils');
+
 // 载入和初始化中间件
 app.use(logger('dev'));
 app.use(bodyParser.json());

@@ -6,6 +6,12 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>欢迎来到<%= title %></p>
+    <ul class="topics">
+    <% topics.forEach(function (topic) { %>
+      <li class="item">
+        <a href="/topic/<%= topic._id %>"><%= topic.title %></a>
+      </li>
+    <% }); %>
+    </ul>
   </body>
 </html>

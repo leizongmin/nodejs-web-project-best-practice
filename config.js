@@ -6,6 +6,6 @@ module.exports = {
   port: 3001,
 
   // MongoDB数据库连接
-  db: 'mongodb://127.0.0.1/node_club_dev'
+  db: 'mongodb://127.0.0.1/stuq_test'
 
 };

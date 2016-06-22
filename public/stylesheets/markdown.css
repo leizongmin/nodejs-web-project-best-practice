@@ -1,0 +1,130 @@
+body {
+  margin: auto;
+  color: rgba(0, 0, 0, 0.8);
+  word-break: break-word;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 350;
+}
+b, strong, h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+b, strong {
+  text-decoration: underline;
+  padding: 0 0.4em;
+}
+blockquote b, blockquote strong {
+  text-decoration: none;
+}
+em {
+  font-size: 0.875em;
+}
+blockquote em {
+  font-size: 1em;
+}
+#ds-thread {
+  margin-top: 20px;
+}
+blockquote {
+  font-size: 14px;
+  color: #333;
+  padding: 8px 4px 8px 16px;
+  font-style: normal;
+  background-color: #f7f7f8;
+  margin: 45px 0;
+  border-left: 4px solid #ddd;
+}
+code {
+  padding: 0 0.4em;
+  font-size: 0.875em;
+  word-break: break-word;
+  /*color: #008;*/
+  font-family: Consolas,Menlo,Monaco,"Courier New",monospace;
+  text-rendering: optimizeSpeed;
+  border-radius: 3px;
+  white-space: pre-wrap;
+  color: #0086b3;
+}
+pre {
+  line-height: 1.45;
+  padding: 16px;
+  background-color: #f7f7f8;
+  border-radius: 3px;
+  white-space: pre-wrap;
+  overflow-x: scroll;
+}
+pre code {
+  padding: 0;
+  color: rgba(0,0,0,.9);
+  display: block;
+  min-width: 700px;
+}
+h2 {
+  border-bottom: 2px solid rgba(0,39,59,.08);
+  margin-top: 52px;
+}
+a {
+  color: #008E59;
+  text-decoration: none;
+}
+a:hover {
+  color: #B60000;
+}
+ul {
+  list-style-position: outside;
+  padding: 0 2em;
+}
+#content a {
+  text-decoration: underline;
+}
+hr {
+  border: none;
+  border-bottom: 2px solid #CCC;
+  margin: 20px 0 40px 0;
+}
+table {
+  max-width: 100%;
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td, th {
+  border: 1px solid #CCC;
+  padding: 4px 16px;
+}
+#title {
+  margin-bottom: 0;
+  line-height: 1.2em;
+  margin-top: 2em;
+}
+#date {
+  font-size: 87.5%;
+  margin-top: 1em;
+}
+#nav {
+  border-bottom: 2px solid #eee;
+  font-size: 18px;
+}
+#license, #about {
+  font-size: 14px;
+  background-color: #f7f7f8;
+  padding: 16px;
+}
+#license {
+  margin-bottom: 4em;
+}
+#content {
+  min-height: 200px;
+  margin-top: 4em;
+  margin-bottom: 4em;
+}
+#content img {
+  display: block;
+  max-width: 100%;
+  margin: auto;
+}
+li > p {
+  margin-top: 5px;
+  margin-bottom: 0.4em;
+}
