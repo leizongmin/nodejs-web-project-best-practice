@@ -5,9 +5,13 @@
  */
 
 // 默认是development
-const env = process.env.NODE_ENV || 'development';
+const envs = (process.env.NODE_ENV || 'development').split(',');
 
 // 载入配置文件
-const config = require('./config/' + env + '.js');
+let config = {};
+envs.forEach(env => {
+  const c = require('./config/' + env + '.js');
+  Object.assign(config, c);
+});
 
 module.exports = config;
