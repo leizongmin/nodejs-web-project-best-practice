@@ -6,12 +6,16 @@
 
 const should = require('should');
 const request = require('supertest');
-const app = require('../app');
+const project = require('../app');
 
 describe('/api/topics', function () {
 
+  before(function (done) {
+    project.ready(done);
+  });
+
   it('should response topics', function (done) {
-    request(app)
+    request(project.app)
       .get('/api/topics')
       .expect('Content-Type', /json/)
       .expect(200)

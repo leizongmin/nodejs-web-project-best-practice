@@ -6,13 +6,17 @@
 
 const should = require('should');
 const request = require('supertest');
-const app = require('../app');
+const project = require('../app');
 const Topic = require('../proxy/topic');
 
 describe('/api/topic/:id', function () {
 
+  before(function (done) {
+    project.ready(done);
+  });
+
   it('should response null', function (done) {
-    request(app)
+    request(project.app)
       .get('/api/topic/000000000000000000000000')
       .expect('Content-Type', /json/)
       .expect(200)
@@ -33,7 +37,7 @@ describe('/api/topic/:id', function () {
 
       const topic = list[0];
 
-      request(app)
+      request(project.app)
         .get('/api/topic/' + topic._id)
         .expect('Content-Type', /json/)
         .expect(200)
