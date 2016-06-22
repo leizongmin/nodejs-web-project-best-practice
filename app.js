@@ -65,9 +65,9 @@ app.use(function (err, req, res, next) {
 
 // 监听端口
 if (!module.parent) {
-  app.listen(config.port, err => {
+  app.listen(config.get('port'), err => {
     if (err) throw err;
-    console.log('服务器已启动。  http://127.0.0.1:%d', config.port);
+    console.log('服务器已启动。  http://127.0.0.1:%d', config.get('port'));
   });
 }
 

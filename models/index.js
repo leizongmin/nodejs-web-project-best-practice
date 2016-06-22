@@ -7,9 +7,9 @@
 const mongoose = require('mongoose');
 const config = require('../config');
 
-mongoose.connect(config.db, err => {
+mongoose.connect(config.get('db'), err => {
   if (err) {
-    console.error('connect to %s error: ', config.db, err.message);
+    console.error('connect to %s error: ', config.get('db'), err.message);
     process.exit(1);
   }
 });

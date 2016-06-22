@@ -128,3 +128,6 @@ li > p {
   margin-top: 5px;
   margin-bottom: 0.4em;
 }
+img {
+  max-width: 100%;
+}
