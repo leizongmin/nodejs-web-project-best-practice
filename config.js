@@ -1,25 +1,13 @@
-/* 配置文件 */
+'use strict';
 
-module.exports = {
+/**
+ * 载入配置文件
+ */
 
-  // 网站端口
-  port: 3001,
+// 默认是development
+const env = process.env.NODE_ENV || 'development';
 
-  // MongoDB数据库连接
-  db: 'mongodb://127.0.0.1/stuq_test',
+// 载入配置文件
+const config = require('./config/' + env + '.js');
 
-  // 日志记录器
-  log: {
-    level: 'INFO',
-    appenders: [
-      { type: 'console' },
-      {
-        "type": "dateFile",
-        "filename": "logs/",
-        "pattern": "cheese-yyyy-MM-dd.log",
-        "alwaysIncludePattern": true,
-      },
-    ],
-  },
-
-};
+module.exports = config;

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon app.js",
-    "test": "mocha -t 5000"
+    "test": "export NODE_ENV=test && mocha -t 5000"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
