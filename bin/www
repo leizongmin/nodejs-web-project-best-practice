@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+
+'use strict';
+
+/**
+ * 启动服务器
+ */
+
+const Project = require('../app');
+
+// 创建Project实例
+const project = new Project(process.env.NODE_ENV);
+
+// 初始化
+project.init(err => {
+  if (err) throw err;
+});

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node bin/www",
     "test": "export NODE_ENV=development,test && mocha -t 5000"
   },
   "dependencies": {

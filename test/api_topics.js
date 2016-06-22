@@ -6,12 +6,14 @@
 
 const should = require('should');
 const request = require('supertest');
-const project = require('../app');
+const Project = require('../app');
 
 describe('/api/topics', function () {
 
+  let project = new Project(process.env.NODE_ENV);
+
   before(function (done) {
-    project.ready(done);
+    project.init(done);
   });
 
   it('should response topics', function (done) {
