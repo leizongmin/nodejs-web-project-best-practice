@@ -68,3 +68,6 @@ app.listen(config.port, err => {
   if (err) throw err;
   console.log('服务器已启动。  http://127.0.0.1:%d', config.port);
 });
+
+// 输出app
+module.exports = app;
